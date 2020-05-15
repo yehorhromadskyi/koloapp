@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace koloapp.Views
 {
@@ -13,6 +12,16 @@ namespace koloapp.Views
         public MainPage()
         {
             InitializeComponent();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            MessagingCenter.Subscribe<ScanPage, string>(this, "Scanned", (obj, url) =>
+            {
+                CurrentPage = Children[0];
+            });
         }
     }
 }

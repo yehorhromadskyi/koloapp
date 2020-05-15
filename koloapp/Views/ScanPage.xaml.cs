@@ -15,9 +15,10 @@ namespace koloapp.Views
 
         void scanView_OnScanResult(ZXing.Result result)
         {
-            Device.BeginInvokeOnMainThread(async () =>
+            Device.BeginInvokeOnMainThread(() =>
             {
-                await DisplayAlert("Scanned result", "The barcode's text is " + result.Text + ". The barcode's format is " + result.BarcodeFormat, "OK");
+                MessagingCenter.Send(this, "Scanned", "");
+                //    await DisplayAlert("Scanned result", "The barcode's text is " + result.Text + ". The barcode's format is " + result.BarcodeFormat, "OK");
             });
         }
     }

@@ -27,6 +27,11 @@ namespace koloapp.ViewModels
                 Items.Add(newItem);
                 await DataStore.AddItemAsync(newItem);
             });
+
+            MessagingCenter.Subscribe<ScanPage, string>(this, "Scanned", async (obj, url) =>
+            {
+                // reload page
+            });
         }
 
         async Task ExecuteLoadItemsCommand()
