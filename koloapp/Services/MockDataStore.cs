@@ -14,12 +14,12 @@ namespace koloapp.Services
         {
             items = new List<Item>()
             {
-                new Item { Id = Guid.NewGuid().ToString(), Text = "First item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Second item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Third item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is an item description." }
+                new Item { Id = Guid.NewGuid().ToString(), Text = "Rapeseed", Description="110 t" },
+                new Item { Id = Guid.NewGuid().ToString(), Text = "Early sowing winter wheat", Description="120 t" },
+                new Item { Id = Guid.NewGuid().ToString(), Text = "Soybeans", Description="120 t" },
+                new Item { Id = Guid.NewGuid().ToString(), Text = "Corn", Description="400 t" },
+                new Item { Id = Guid.NewGuid().ToString(), Text = "Early sowing winter wheat", Description="120 t" },
+                new Item { Id = Guid.NewGuid().ToString(), Text = "Soybeans", Description="120 t" }
             };
         }
 
