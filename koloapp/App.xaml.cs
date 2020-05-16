@@ -14,6 +14,7 @@ namespace koloapp
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
+
             MainPage = new MainPage();
         }
 

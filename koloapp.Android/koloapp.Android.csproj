@@ -94,12 +94,24 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\call.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\call.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\call.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\call.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\call.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\koloapp\koloapp.csproj">
       <Project>{98BDA6D4-1408-42D1-B9D6-A4806068A6D4}</Project>
       <Name>koloapp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\drawable-hdpi\" />
+    <Folder Include="Resources\drawable-mdpi\" />
+    <Folder Include="Resources\drawable-xhdpi\" />
+    <Folder Include="Resources\drawable-xxhdpi\" />
+    <Folder Include="Resources\drawable-xxxhdpi\" />
   </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

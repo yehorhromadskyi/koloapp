@@ -1,13 +1,13 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" x:Class="koloapp.Views.ItemsPage"
+             mc:Ignorable="d"
              Title="{Binding Title}"
-             x:Name="BrowseItemsPage">
-    <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadProductsCommand}">
-        <CollectionView x:Name="ItemsCollectionView" ItemsSource="{Binding Products}">
+             x:Class="koloapp.Views.ProductHistoryPage">
+    <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadHistoryCommand}">
+        <CollectionView x:Name="ItemsCollectionView" ItemsSource="{Binding History}">
             <d:CollectionView.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>First Item</x:String>
@@ -21,11 +21,11 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout Padding="10">
-                        <Label Text="{Binding Name}" d:Text="{Binding .}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
-                        <Label Text="{Binding Quantity}" d:Text="Item descripton" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
-                        <StackLayout.GestureRecognizers>
+                        <Label Text="{Binding SellerName}" d:Text="{Binding .}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
+                        <Label Text="{Binding Date}" d:Text="Item descripton" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
+                        <!--<StackLayout.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnItemSelected" />
-                        </StackLayout.GestureRecognizers>
+                        </StackLayout.GestureRecognizers>-->
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
