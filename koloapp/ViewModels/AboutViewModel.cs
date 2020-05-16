@@ -9,7 +9,7 @@ namespace koloapp.ViewModels
     {
         public AboutViewModel()
         {
-            Title = "About";
+            Title = "Profile";
             OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://xamarin.com"));
         }
 

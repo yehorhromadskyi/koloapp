@@ -16,10 +16,31 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-                    <Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64" />
-                </ContentView>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Start"
+                         VerticalOptions="Center"
+                         Spacing="10"
+                         Padding="10">
+                <Frame WidthRequest="60"
+                       HeightRequest="60"
+                       CornerRadius="30"
+                       Padding="0"
+                       BorderColor="{StaticResource Primary}"
+                       HasShadow="False"
+                       MinimumWidthRequest="60"
+                       MinimumHeightRequest="60">
+
+                    <Label Text="JD"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           FontSize="Large" />
+                </Frame>
+
+                <Label Text="John Doe"
+                       FontSize="Body"
+                       VerticalTextAlignment="Center"
+                       LineBreakMode="TailTruncation"
+                       MaxLines="1" />
             </StackLayout>
         </StackLayout>
         <ScrollView Grid.Row="1">
