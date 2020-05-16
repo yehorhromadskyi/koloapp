@@ -15,17 +15,18 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+        <StackLayout BackgroundColor="{StaticResource Accent}"
+                     VerticalOptions="FillAndExpand"
+                     HorizontalOptions="Fill">
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="Start"
                          VerticalOptions="Center"
                          Spacing="10"
                          Padding="10">
-                <Frame WidthRequest="60"
-                       HeightRequest="60"
-                       CornerRadius="30"
+                <Frame WidthRequest="50"
+                       HeightRequest="50"
+                       CornerRadius="25"
                        Padding="0"
-                       BorderColor="{StaticResource Primary}"
                        HasShadow="False"
                        MinimumWidthRequest="60"
                        MinimumHeightRequest="60">
