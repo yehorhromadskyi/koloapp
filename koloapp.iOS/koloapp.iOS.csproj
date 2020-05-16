@@ -125,6 +125,10 @@
     <BundleResource Include="Resources\tab_list.png" />
     <BundleResource Include="Resources\tab_list%402x.png" />
     <BundleResource Include="Resources\tab_list%403x.png" />
+    <BundleResource Include="Resources\profile_placeholder.jpg" />
+    <BundleResource Include="Resources\call.png" />
+    <BundleResource Include="Resources\call%402x.png" />
+    <BundleResource Include="Resources\call%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
