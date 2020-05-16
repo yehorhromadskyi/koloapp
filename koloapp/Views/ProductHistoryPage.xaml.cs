@@ -10,7 +10,7 @@ namespace koloapp.Views
     [DesignTimeVisible(false)]
     public partial class ProductHistoryPage : ContentPage
     {
-        private ProductHistoryViewModel viewModel;
+        readonly ProductHistoryViewModel viewModel;
 
         public ProductHistoryPage(Product product)
         {

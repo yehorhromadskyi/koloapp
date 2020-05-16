@@ -18,7 +18,7 @@ namespace koloapp.ViewModels
         public ObservableCollection<Product> Products { get; set; }
         public Command LoadProductsCommand { get; set; }
 
-        private HttpClient _httpClient;
+        private readonly HttpClient _httpClient;
 
         public ProductsViewModel()
         {
@@ -30,11 +30,6 @@ namespace koloapp.ViewModels
             {
                 BaseAddress = new Uri("https://kolo-api.azurewebsites.net/")
             };
-
-            MessagingCenter.Subscribe<ScanPage, string>(this, "Scanned", (obj, url) =>
-            {
-                // reload page
-            });
         }
 
         async Task ExecuteLoadProductsCommand()
