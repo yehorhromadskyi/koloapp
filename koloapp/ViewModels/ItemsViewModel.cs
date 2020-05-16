@@ -13,14 +13,14 @@ using System.Collections.Generic;
 
 namespace koloapp.ViewModels
 {
-    public class ProductsViewModel : BaseViewModel
+    public class ItemsViewModel : BaseViewModel
     {
         public ObservableCollection<Product> Products { get; set; }
         public Command LoadProductsCommand { get; set; }
 
         private readonly HttpClient _httpClient;
 
-        public ProductsViewModel()
+        public ItemsViewModel()
         {
             Title = "Products";
             Products = new ObservableCollection<Product>();

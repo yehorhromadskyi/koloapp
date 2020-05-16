@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:effects="clr-namespace:koloapp.Effects"
+             mc:Ignorable="d"
+             Title="{Binding Title}"
+             x:Class="koloapp.Views.ProductPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="Accent">#96d1ff</Color>
+            <Color x:Key="LightTextColor">#999999</Color>
+
+            <Style x:Key="stlContactBtn" TargetType="Button">
+                <Setter Property="TranslationY"     Value="-50"/>
+                <Setter Property="TranslationX"     Value="45"/>
+                <Setter Property="BackgroundColor"  Value="#2196F3"/>
+                <Setter Property="WidthRequest"     Value="56"/>
+                <Setter Property="HeightRequest"    Value="56"/>
+                <Setter Property="CornerRadius"     Value="28"/>
+            </Style>
+
+            <Style x:Key="stlBoardTitle" TargetType="Label">
+                <Setter Property="Padding"           Value="0,30,0,5"/>
+                <Setter Property="TextColor"         Value="#a5a2a2"/>
+                <Setter Property="FontSize"          Value="16"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+
+            <Style x:Key="stlBoardDesc" TargetType="Label">
+                <Setter Property="FontAttributes"    Value="Bold"/>
+                <Setter Property="FontSize"          Value="16" />
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+
+            <Style x:Key="stlMainFrame" TargetType="Frame">
+                <Setter Property="TranslationY"    Value="{OnPlatform iOS='-150', Android='-33'}"/>
+                <Setter Property="HeightRequest"   Value="{OnPlatform iOS='120', Android='228'}"/>
+                <Setter Property="HasShadow"       Value="False" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadDataCommand}">
+            <ScrollView>
+                <Grid BackgroundColor="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <!-- 1. Profile picture-->
+                    <Image Grid.Row="0" Source="profile_placeholder.jpg" VerticalOptions="Start" />
+
+                    <!-- 2. Contact informaqtion frame-->
+                    <StackLayout Grid.Row="0" BackgroundColor="White" VerticalOptions="End">
+                        <Frame CornerRadius="40" Style="{StaticResource stlMainFrame}" >
+                            <!-- Blocks: 3 and 4 -->
+                            <Grid Padding="25,10,25,0" RowSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <!-- 3. Message button-->
+                                <Button Grid.Column="2" Style="{StaticResource stlContactBtn}" HorizontalOptions="Start" ImageSource="email"/>
+                                <!-- 4. Contact information-->
+                                <Label Grid.ColumnSpan="3" d:Text="John Doe"
+                                        Text="{Binding Seller.Name}"
+                                        FontAttributes="Bold"
+                                        FontSize="30"/>
+                                <StackLayout Grid.Row="1" Grid.ColumnSpan="3"
+                                            Orientation="Horizontal">
+                                    <!--<Image Source="pin"
+                                           HeightRequest="20">
+                                    </Image>-->
+
+                                    <Label d:Text="Kyiv"
+                                            Text="{Binding Seller.Address}"
+                                            TextColor="#a5a2a2" FontSize="16"/>
+                                </StackLayout>
+
+                                <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+                                        d:Text="Private farmer" Text="{Binding Seller.Description}"
+                                        Padding="0,10,0,0"
+                                        FontSize="16" />
+
+                                <Button Grid.Row="5" Grid.ColumnSpan="3"
+                                        TextColor="White"
+                                        BackgroundColor="#2193f3"
+                                        Text="View certificates"
+                                        Margin="0,20,0,2"
+                                        FontAttributes="Bold"
+                                        FontSize="17"
+                                        HeightRequest="45"/>
+
+                                <BoxView Grid.Row="6" Grid.ColumnSpan="3"
+                                         Margin="-25,20"
+                                         HeightRequest="2"
+                                         BackgroundColor="{StaticResource Primary}"/>
+
+                                <StackLayout Grid.Row="7" Grid.ColumnSpan="3"
+                                             Orientation="Horizontal">
+                                    <Label 
+                                        d:Text="Wheat"
+                                        Text="{Binding Product.Name}"
+                                        FontAttributes="Bold"
+                                        HorizontalOptions="StartAndExpand"
+                                        VerticalTextAlignment="Center"
+                                        FontSize="26"/>
+
+                                    <Label d:Text="2019"
+                                           Text="{Binding Product.HarvestYear}"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalOptions="End"
+                                           TextColor="#a5a2a2" FontSize="16"/>
+                                </StackLayout>
+
+                                <Button Grid.Row="8" Grid.ColumnSpan="3"
+                                        TextColor="White"
+                                        BackgroundColor="#2193f3"
+                                        Text="View certificates"
+                                        Margin="0,20,0,2"
+                                        FontAttributes="Bold"
+                                        FontSize="17"
+                                        HeightRequest="45"/>
+
+                                <Button Grid.Row="9" Grid.ColumnSpan="3"
+                                        TextColor="White"
+                                        BackgroundColor="#2193f3"
+                                        Text="View certificates"
+                                        Margin="0,20,0,2"
+                                        FontAttributes="Bold"
+                                        FontSize="17"
+                                        HeightRequest="45"/>
+
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+        </RefreshView>
+    </ContentPage.Content>
+</ContentPage>

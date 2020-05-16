@@ -18,13 +18,13 @@ namespace koloapp.Views
     [DesignTimeVisible(false)]
     public partial class ItemsPage : ContentPage
     {
-        readonly ProductsViewModel viewModel;
+        readonly ItemsViewModel viewModel;
 
         public ItemsPage()
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new ProductsViewModel();
+            BindingContext = viewModel = new ItemsViewModel();
 
             MessagingCenter.Subscribe<ScanPage, Product>(this, "Scanned", async (obj, product) =>
             {
@@ -41,7 +41,7 @@ namespace koloapp.Views
 
         Task OpenHistoryAsync(Product product)
         {
-            return Application.Current.MainPage.Navigation.PushAsync(new ProductHistoryPage(product));
+            return Application.Current.MainPage.Navigation.PushAsync(new ProductPage(product));
         }
 
         protected override void OnAppearing()
