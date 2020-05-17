@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using koloapp.Models;
@@ -11,6 +13,7 @@ namespace koloapp.ViewModels
     public class ProductViewModel : BaseViewModel
     {
         private readonly HttpClient _httpClient;
+        private Product _product;
 
         public Command LoadDataCommand { get; set; }
 
@@ -19,8 +22,7 @@ namespace koloapp.ViewModels
 
         public ProductViewModel(Product product)
         {
-            Product = product;
-            OnPropertyChanged(nameof(Product));
+            _product = product;
 
             LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
 
@@ -36,13 +38,21 @@ namespace koloapp.ViewModels
 
             try
             {
-                var api = $"/api/Sellers/{Product.SellerId}";
-                var response = await _httpClient.GetAsync(api);
-                var json = await response.Content.ReadAsStringAsync();
-                var seller = JsonConvert.DeserializeObject<Seller>(json);
+                var apiSeller = $"/api/Sellers/{_product.SellerId}";
+                var responseSeller = await _httpClient.GetAsync(apiSeller);
+                var jsonSeller = await responseSeller.Content.ReadAsStringAsync();
+                var seller = JsonConvert.DeserializeObject<Seller>(jsonSeller);
 
                 Seller = seller;
                 OnPropertyChanged(nameof(Seller));
+
+                var apiProducts = $"/api/Sellers/{_product.SellerId}/Products";
+                var responseProducts = await _httpClient.GetAsync(apiProducts);
+                var jsonProducts = await responseProducts.Content.ReadAsStringAsync();
+                var products = JsonConvert.DeserializeObject<List<Product>>(jsonProducts);
+
+                Product = products.FirstOrDefault(p => p.Id == _product.Id);
+                OnPropertyChanged(nameof(Product));
             }
             catch (Exception ex)
             {

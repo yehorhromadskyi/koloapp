@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace koloapp.Models
@@ -23,6 +24,6 @@ namespace koloapp.Models
         public string Description { get; set; }
 
         [JsonProperty("documents")]
-        public Document[] Documents { get; set; }
+        public List<Document> Documents { get; set; }
     }
 }

@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:effects="clr-namespace:koloapp.Effects"
              mc:Ignorable="d"
              Title="{Binding Title}"
              x:Class="koloapp.Views.ProductPage">
@@ -58,15 +57,55 @@
                                         Padding="0,10,0,0"
                                         FontSize="16" />
 
-                        <Button TextColor="White"
-                                        BackgroundColor="#2193f3"
-                                        Text="View certificates"
-                                        Margin="0,20,0,2"
-                                        FontAttributes="Bold"
-                                        FontSize="17"
-                                        HeightRequest="45"/>
-
                         <BoxView Margin="0,20"
+                                         HeightRequest="2"
+                                         BackgroundColor="{StaticResource Primary}"/>
+
+                        <Label Text="Certificates"
+                                        FontAttributes="Bold"
+                                        FontSize="26"/>
+
+                        <CollectionView Margin="0,20,0,0"
+                                        HeightRequest="70"
+                                        ItemsSource="{Binding Seller.Documents}">
+                                    <CollectionView.ItemsLayout>
+                                        <LinearItemsLayout Orientation="Horizontal"
+                                                           ItemSpacing="20"/>
+                                    </CollectionView.ItemsLayout>
+                                    <d:CollectionView.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>First Item</x:String>
+                                            <x:String>Second</x:String>
+                                        </x:Array>
+                                    </d:CollectionView.ItemsSource>
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackLayout>
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                                </StackLayout.GestureRecognizers>
+                                                <ImageButton Source="attach"
+                                                             BindingContext="{Binding .}"
+                                                             Clicked="TapGestureRecognizer_Tapped"
+                                                       HorizontalOptions="Center">
+                                                </ImageButton>
+                                                <Label d:Text="{Binding .}"
+                                                       WidthRequest="100"
+                                                       MaxLines="1"
+                                                       FontSize="12"
+                                                       LineBreakMode="TailTruncation"
+                                                       HorizontalTextAlignment="Center"
+                                                       Text="{Binding FileName}"/>
+                                            </StackLayout>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+
+                        
+                        <BoxView Margin="0,20,0,0"
+                                         HeightRequest="2"
+                                         BackgroundColor="{StaticResource Primary}"/>
+                        <BoxView Margin="0,2,0,20"
                                          HeightRequest="2"
                                          BackgroundColor="{StaticResource Primary}"/>
 
@@ -86,14 +125,37 @@
                                            TextColor="#a5a2a2" FontSize="16"/>
                         </StackLayout>
 
-                        <Button TextColor="White"
-                                        BackgroundColor="#2193f3"
-                                        Text="View certificates"
-                                        Margin="0,20,0,2"
-                                        FontAttributes="Bold"
-                                        FontSize="17"
-                                        HeightRequest="45"/>
-
+                        <CollectionView Margin="0,20,0,0"
+                                        HeightRequest="70"
+                                        ItemsSource="{Binding Product.Documents}"
+                                        SelectionMode="Single">
+                                    <CollectionView.ItemsLayout>
+                                        <LinearItemsLayout Orientation="Horizontal"
+                                                           ItemSpacing="20"/>
+                                    </CollectionView.ItemsLayout>
+                                    <d:CollectionView.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>First Item</x:String>
+                                            <x:String>Second</x:String>
+                                        </x:Array>
+                                    </d:CollectionView.ItemsSource>
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackLayout>
+                                                <ImageButton Source="attach"
+                                                             HorizontalOptions="Center"
+                                                             Clicked="TapGestureRecognizer_Tapped"/>
+                                                <Label d:Text="{Binding .}"
+                                                       WidthRequest="100"
+                                                       MaxLines="1"
+                                                       FontSize="12"
+                                                       LineBreakMode="TailTruncation"
+                                                       HorizontalTextAlignment="Center"
+                                                       Text="{Binding FileName}"/>
+                                            </StackLayout>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
                     </StackLayout>
                 </StackLayout>
             </ScrollView>

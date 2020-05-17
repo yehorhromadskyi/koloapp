@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace koloapp.Models
 {
@@ -21,5 +22,8 @@ namespace koloapp.Models
 
         [JsonProperty("selerId")]
         public int SellerId { get; set; }
+
+        [JsonProperty("documents")]
+        public List<Document> Documents { get; set; }
     }
 }

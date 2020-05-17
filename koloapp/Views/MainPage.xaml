@@ -8,16 +8,6 @@
             x:Class="koloapp.Views.MainPage"
             NavigationPage.HasNavigationBar="False">
     <TabbedPage.Children>
-        <NavigationPage Title="Products">
-            <NavigationPage.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="iOS" Value="tab_list.png" />
-                </OnPlatform>
-            </NavigationPage.Icon>
-            <x:Arguments>
-                <views:ItemsPage />
-            </x:Arguments>
-        </NavigationPage>
         <NavigationPage Title="Scan">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
@@ -28,6 +18,18 @@
                 <views:ScanPage />
             </x:Arguments>
         </NavigationPage>
+
+        <NavigationPage Title="Products">
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="tab_list.png" />
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <views:ItemsPage />
+            </x:Arguments>
+        </NavigationPage>
+        
         <!--<NavigationPage Title="Profile">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
