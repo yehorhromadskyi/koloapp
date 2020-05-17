@@ -37,5 +37,10 @@ namespace koloapp.Views
                 await Launcher.OpenAsync($"https://kolo-api.azurewebsites.net/api/Documents/{document1.Id}");
             }
         }
+
+        async void OpenProjects_Clicked(System.Object sender, System.EventArgs e)
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new ProjectsPage());
+        }
     }
 }

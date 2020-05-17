@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" x:Class="koloapp.Views.ItemsPage"
+             mc:Ignorable="d"
              Title="{Binding Title}"
+             x:Class="koloapp.Views.ItemsPage"
              x:Name="BrowseItemsPage">
     <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadProductsCommand}">
         <CollectionView x:Name="ItemsCollectionView" ItemsSource="{Binding Products}">

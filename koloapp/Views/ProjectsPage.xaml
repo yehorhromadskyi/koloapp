@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             Title="{Binding Title}"
+             x:Class="koloapp.Views.ProjectsPage">
+    <ContentPage.Content>
+        <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadDataCommand}">
+            <CollectionView x:Name="ItemsCollectionView" ItemsSource="{Binding Projects}">
+                <d:CollectionView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>First Item</x:String>
+                        <x:String>Second Item Second Item Second Item Second Item</x:String>
+                        <x:String>Third Item</x:String>
+                        <x:String>Fourth Item</x:String>
+                        <x:String>Fifth Item</x:String>
+                        <x:String>Sixth Item</x:String>
+                    </x:Array>
+                </d:CollectionView.ItemsSource>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HeightRequest="200" Padding="-1,-1,0,10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="5*"/>
+                            </Grid.RowDefinitions>
+                            <Image Grid.RowSpan="2" d:Source="profile_placeholder.jpg" Source="{Binding Image}" Aspect="Fill" HorizontalOptions="FillAndExpand" />
+
+                            <StackLayout Grid.Row="1" BackgroundColor="#80000000" Padding="10,5">
+                                <Frame
+                                Margin="0,10,0,0"
+                                Padding="0"
+                                HasShadow="False"
+                                BorderColor="White"
+                                 CornerRadius="10"
+                                 HeightRequest="20"
+                                 BackgroundColor="Transparent"
+                                 HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="Start"
+                                IsClippedToBounds="True">
+                                    <yummy:PancakeView WidthRequest="{Binding W}" HorizontalOptions="Start" CornerRadius="10" BackgroundGradientAngle="90">
+                                        <yummy:PancakeView.BackgroundGradientStops>
+                                            <yummy:GradientStopCollection>
+                                                <yummy:GradientStop Color="#6ee2f5" Offset="0" />
+                                                <yummy:GradientStop Color="#6454f0" Offset="1" />
+                                            </yummy:GradientStopCollection>
+                                        </yummy:PancakeView.BackgroundGradientStops>
+                                    </yummy:PancakeView>
+                                </Frame>
+
+                                <Label Text="{Binding Name}"
+                                   d:Text="{Binding .}"
+                                   LineBreakMode="WordWrap"
+                                   MaxLines="2"
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   TextColor="White"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </ContentPage.Content>
+</ContentPage>

@@ -40,14 +40,28 @@
                     <Image Source="profile_placeholder.jpg" VerticalOptions="Start" />
                     <StackLayout VerticalOptions="FillAndExpand" Padding="25,10,25,0"
                                  TranslationY="-50">
-                        <Button Style="{StaticResource stlContactBtn}"
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Button Style="{StaticResource stlContactBtn}"
+                                    Clicked="OpenProjects_Clicked"
+                                HorizontalOptions="StartAndExpand"
+                                ImageSource="euro"/>
+
+                            <Button Style="{StaticResource stlContactBtn}"
                                 HorizontalOptions="End"
                                 ImageSource="email"/>
+
+                            <Button Style="{StaticResource stlContactBtn}"
+                                HorizontalOptions="End"
+                                ImageSource="star"/>
+                        </StackLayout>
+
                         <Label d:Text="John Doe"
                                         Text="{Binding Seller.Name}"
                                         FontAttributes="Bold"
                                         FontSize="30"/>
                         <StackLayout Orientation="Horizontal">
+                            <Image Source="pin" HeightRequest="20"/>
+
                             <Label d:Text="Kyiv"
                                             Text="{Binding Seller.Address}"
                                             TextColor="#a5a2a2" FontSize="16"/>
@@ -101,7 +115,7 @@
                                     </CollectionView.ItemTemplate>
                                 </CollectionView>
 
-                        
+
                         <BoxView Margin="0,20,0,0"
                                          HeightRequest="2"
                                          BackgroundColor="{StaticResource Primary}"/>
@@ -111,51 +125,133 @@
 
                         <StackLayout Orientation="Horizontal">
                             <Label 
-                                        d:Text="Wheat"
+                                        d:Text="Honey"
                                         Text="{Binding Product.Name}"
                                         FontAttributes="Bold"
                                         HorizontalOptions="StartAndExpand"
                                         VerticalTextAlignment="Center"
                                         FontSize="26"/>
 
-                            <Label d:Text="2019"
-                                           Text="{Binding Product.HarvestYear}"
-                                           VerticalTextAlignment="Center"
+                            <Label VerticalTextAlignment="Center"
                                            HorizontalOptions="End"
-                                           TextColor="#a5a2a2" FontSize="16"/>
+                                           TextColor="#a5a2a2" FontSize="16">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Harvest: " FontAttributes="Bold" />
+                                        <Span d:Text="2019" Text="{Binding Product.HarvestYear}"  />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
                         </StackLayout>
+
+                        <Label 
+                                           d:Text="Lime"
+                            Text="{Binding Product.Kind}"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalOptions="Start"
+                                           TextColor="#a5a2a2" FontSize="16">
+                        </Label>
+
+                        <Label VerticalTextAlignment="Center"
+                                           HorizontalOptions="Start"
+                                           TextColor="#a5a2a2" FontSize="16">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Batch number: "  />
+                                        <Span d:Text="2" Text="{Binding Product.BatchNumber}"  />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
 
                         <CollectionView Margin="0,20,0,0"
                                         HeightRequest="70"
                                         ItemsSource="{Binding Product.Documents}"
                                         SelectionMode="Single">
-                                    <CollectionView.ItemsLayout>
-                                        <LinearItemsLayout Orientation="Horizontal"
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal"
                                                            ItemSpacing="20"/>
-                                    </CollectionView.ItemsLayout>
-                                    <d:CollectionView.ItemsSource>
-                                        <x:Array Type="{x:Type x:String}">
-                                            <x:String>First Item</x:String>
-                                            <x:String>Second</x:String>
-                                        </x:Array>
-                                    </d:CollectionView.ItemsSource>
-                                    <CollectionView.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackLayout>
-                                                <ImageButton Source="attach"
+                            </CollectionView.ItemsLayout>
+                            <d:CollectionView.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>First Item</x:String>
+                                    <x:String>Second</x:String>
+                                </x:Array>
+                            </d:CollectionView.ItemsSource>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout>
+                                        <ImageButton Source="attach"
                                                              HorizontalOptions="Center"
                                                              Clicked="TapGestureRecognizer_Tapped"/>
-                                                <Label d:Text="{Binding .}"
+                                        <Label d:Text="{Binding .}"
                                                        WidthRequest="100"
                                                        MaxLines="1"
                                                        FontSize="12"
                                                        LineBreakMode="TailTruncation"
                                                        HorizontalTextAlignment="Center"
                                                        Text="{Binding FileName}"/>
-                                            </StackLayout>
-                                        </DataTemplate>
-                                    </CollectionView.ItemTemplate>
-                                </CollectionView>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                        <BoxView Margin="0,20,0,0"
+                                         HeightRequest="2"
+                                         BackgroundColor="{StaticResource Primary}"/>
+
+                        <Button TextColor="White" BackgroundColor="#2193f3" Text="View other products" Margin="0,20,0,2" FontAttributes="Bold" FontSize="17" HeightRequest="45"/>
+
+                        <BoxView Margin="0,20,0,0"
+                                         HeightRequest="2"
+                                         BackgroundColor="{StaticResource Primary}"/>
+                        <BoxView Margin="0,2,0,20"
+                                         HeightRequest="2"
+                                         BackgroundColor="{StaticResource Primary}"/>
+
+                        <Label Text="Local community"
+                                        FontAttributes="Bold"
+                               HorizontalTextAlignment="Center"
+                                        FontSize="26"/>
+
+                        <CollectionView Margin="0,20,0,0"
+                                        HeightRequest="70"
+                                        ItemsSource="{Binding Locals}"
+                                        SelectionMode="Single">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal"
+                                                           ItemSpacing="20"/>
+                            </CollectionView.ItemsLayout>
+                            <d:CollectionView.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Bogdan Khmelnitsky</x:String>
+                                    <x:String>Martin Borulya</x:String>
+                                </x:Array>
+                            </d:CollectionView.ItemsSource>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout>
+                                        <Frame Padding="0"
+                                               WidthRequest="40"
+                                               HeightRequest="40"
+                                               HasShadow="True"
+                                               CornerRadius="20"
+                                               HorizontalOptions="Center"
+                                               IsClippedToBounds="True">
+                                            <Image Source="profile_placeholder.jpg"
+                                               Aspect="AspectFit"
+                                               HorizontalOptions="CenterAndExpand"/>
+                                        </Frame>
+                                        <Label d:Text="{Binding .}"
+                                                       WidthRequest="120"
+                                                       MaxLines="1"
+                                                       FontSize="12"
+                                                       LineBreakMode="TailTruncation"
+                                                       HorizontalTextAlignment="Center"
+                                                       Text="{Binding Name}"/>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
                     </StackLayout>
                 </StackLayout>
             </ScrollView>

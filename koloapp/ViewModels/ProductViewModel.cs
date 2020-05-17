@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
@@ -20,10 +21,12 @@ namespace koloapp.ViewModels
         public Seller Seller { get; set; }
         public Product Product { get; set; }
 
+        public ObservableCollection<Seller> Locals { get; set; }
+
         public ProductViewModel(Product product)
         {
             _product = product;
-
+            Locals = new ObservableCollection<Seller>();
             LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
 
             _httpClient = new HttpClient()
@@ -38,6 +41,8 @@ namespace koloapp.ViewModels
 
             try
             {
+                Locals.Clear();
+
                 var apiSeller = $"/api/Sellers/{_product.SellerId}";
                 var responseSeller = await _httpClient.GetAsync(apiSeller);
                 var jsonSeller = await responseSeller.Content.ReadAsStringAsync();
@@ -53,6 +58,15 @@ namespace koloapp.ViewModels
 
                 Product = products.FirstOrDefault(p => p.Id == _product.Id);
                 OnPropertyChanged(nameof(Product));
+
+                var apiSellers = $"/api/Sellers";
+                var responseSellers = await _httpClient.GetAsync(apiSellers);
+                var jsonSellers = await responseSellers.Content.ReadAsStringAsync();
+                var sellers = JsonConvert.DeserializeObject<List<Seller>>(jsonSellers);
+                foreach (var localSeller in sellers)
+                {
+                    Locals.Add(localSeller);
+                }
             }
             catch (Exception ex)
             {

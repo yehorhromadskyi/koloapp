@@ -14,6 +14,9 @@ namespace koloapp.Models
         [JsonProperty("harvestYear")]
         public short HarvestYear { get; set; }
 
+        [JsonProperty("batchNumber")]
+        public int BatchNumber { get; set; }
+
         [JsonProperty("kind")]
         public string Kind { get; set; }
 
